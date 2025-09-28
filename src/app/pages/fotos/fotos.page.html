@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Fotos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Botón para tomar foto -->
+  <ion-button expand="block" (click)="tomarFoto()">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Tomar Foto
+  </ion-button>
+
+  <!-- Lista de fotos -->
+  <ion-list>
+    <ion-item *ngFor="let foto of photoService.fotos">
+      <ion-img [src]="foto.webviewPath"></ion-img>
+    </ion-item>
+  </ion-list>
+</ion-content>

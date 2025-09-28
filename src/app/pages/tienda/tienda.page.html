@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tienda</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Filtro por categoría -->
+  <ion-segment value="Todos" (ionChange)="filterByCategory($event.detail.value?.toString())">
+    <ion-segment-button value="Todos">Todos</ion-segment-button>
+    <ion-segment-button value="Electrónica">Electrónica</ion-segment-button>
+    <ion-segment-button value="Ropa">Ropa</ion-segment-button>
+  </ion-segment>
+
+  <!-- Lista de productos -->
+  <ion-list>
+    <ion-item *ngFor="let product of filteredProducts">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="product.image"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>\${{ product.price | number:'1.0-0' }}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="addToCart(product)">Agregar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
